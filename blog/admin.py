@@ -9,6 +9,8 @@ class PostAdmin(admin.ModelAdmin):
         'title',
         'created',
         'updated',
+        'author',
+        'slug'
     )
 
     search_fields = (
@@ -17,6 +19,13 @@ class PostAdmin(admin.ModelAdmin):
         'author__first_name',
         'author__last_name',
     )
+
+    list_filter = [
+        'status',
+        'topics'
+    ]
+
+    prepopulated_fields = {'slug': ('title',)}
 
 
 admin.site.register(models.Post, PostAdmin)
