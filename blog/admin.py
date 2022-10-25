@@ -13,6 +13,9 @@ class PostAdmin(admin.ModelAdmin):
 
     search_fields = (
         'title',
+        'author__username',
+        'author__first_name',
+        'author__last_name',
     )
 
 
