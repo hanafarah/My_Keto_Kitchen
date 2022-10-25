@@ -12,3 +12,18 @@ class Post(models.Model):
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,  # The Django auth user model
+        on_delete=models.PROTECT,  # Prevent posts from being deleted
+        related_name='blog_posts',  # "This" on the user model
+        null=True
+    )
+
+
+class Meta:
+    ordering = ['-created']
+
+
+def __str__(self):
+    return self.title

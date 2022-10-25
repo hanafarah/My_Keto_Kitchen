@@ -4,4 +4,16 @@ from . import models
 # Register your models here.
 
 
-admin.site.register(models.Post)
+class PostAdmin(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'created',
+        'updated',
+    )
+
+    search_fields = (
+        'title',
+    )
+
+
+admin.site.register(models.Post, PostAdmin)
